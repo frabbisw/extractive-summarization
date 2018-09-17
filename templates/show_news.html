@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summarizaed News Artices</title>
+</head>
+<body>
+	{% for news in news_list %}
+	<li><a href="{{ news.url }}">{{ news.title }}</a></li>
+	{% endfor%}
+</body>
+</html>

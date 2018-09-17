@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search News</title>
+</head>
+<body>
+	<form action="{{ url_for('show_result') }}" method="post">
+    <input type="text" name="news_keyword">
+    <input type="submit">
+</form>
+</body>
+</html>
