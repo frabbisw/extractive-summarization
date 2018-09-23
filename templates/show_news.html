@@ -5,7 +5,11 @@
 </head>
 <body>
 	{% for news in news_list %}
-	<li><a href="{{ news.url }}">{{ news.title }}</a></li>
+	<li><a href="{{ news.url }}">{{ news.title }}</a>
+		<br>
+		{{news.text}}
+		<br><br>
+	</li>
 	{% endfor%}
 </body>
 </html>
