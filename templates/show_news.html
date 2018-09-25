@@ -6,6 +6,7 @@
 <body>
 	{% for news in news_list %}
 	<li><a href="{{ news.url }}">{{ news.title }}</a>
+        (published on: {{news.date}})
 		<br>
 		{{news.text}}
 		<br><br>
