@@ -16,7 +16,6 @@ from news_classes import customizedPaper
 from news_classes import paragraph
 
 
-
 # In[2]:
 
 
