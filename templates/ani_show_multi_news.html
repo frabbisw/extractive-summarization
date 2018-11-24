@@ -7,7 +7,7 @@
 	<title>Search News</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style type="text/css">
 	.bs-example{
 		margin: 20px;
@@ -48,30 +48,13 @@
 	</div>
 	<div class="bs-example">
 		<table align="center" width="80%">
-			{% for news in news_list %}
-			<tr><td>
-				<a href="{{ news.url }}">{{ news.title }}</a>
-				(published on: {{news.date}} in "{{news.brand}}")
-				<br>
-				{{news.text}}
-				<br><br>
-			</td></tr>
-			{% endfor%}
+			<tr>
+				<td>
+					{{multi_news}}
+				</td>
+			</tr>
 		</table>
 	</div>
-
-	<table width="80%" align="center">
-		<tr><td>
-			<div class="bs-example" align="center">		
-				{% for i in range(number_of_pages) %}
-				<form id="inline_form" action="{{ url_for('show_other_page') }}" method="post">
-					<input type="hidden" name="page_number" value={{i}}>
-					<button type="submit" class="btn btn-primary">{{i+1}}</button>
-				</form>
-				{% endfor%}	
-			</div>		
-		</td></tr>
-	</table>
 	<br>
 
 </body>
