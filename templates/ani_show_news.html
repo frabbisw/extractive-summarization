@@ -69,10 +69,14 @@
 		<tr>
 			<td>
 				<div align="center">
-						<form id="inline_form" action="{{ url_for('show_other_page') }}" method="post">
-								<input type="hidden" name="page_number" value=0>
+						
+					{% if current_page >= 10 %}
+					<form id="inline_form" action="{{ url_for('show_other_page') }}" method="post" type="hidden">
+								<input type="hidden" name="page_number" value={{10*(current_page//10)-10}}>
 								<button type="submit" class="btn btn-primary"><<</button>
 							</form>
+					{% endif %}
+					{% if number_of_pages < 10 %}
 					{% for i in range(number_of_pages) %}
 					<form id="inline_form" action="{{ url_for('show_other_page') }}" method="post">
 						<input type="hidden" name="page_number" value={{i}}>
@@ -83,10 +87,28 @@
 						{% endif %}
 					</form>
 					{% endfor%}
+
+					{% else %}
+					{% for i in range(10*(current_page//10),10*(current_page//10)+10) %}
+					{% if i < number_of_pages %}
 					<form id="inline_form" action="{{ url_for('show_other_page') }}" method="post">
-							<input type="hidden" name="page_number" value=0>
+						<input type="hidden" name="page_number" value={{i}}>
+						{% if current_page == i %}
+						<button type="submit" class="btn btn-primary">{{i+1}}</button>
+						{% else %}
+						<button type="submit" class="btn" background-color = "#4CAF50">{{i+1}}</button>
+						{% endif %}
+					</form>
+					{% endif %}
+					{% endfor%}
+					{% endif %}
+					
+					{% if current_page//10 < (number_of_pages-1)//10 %}
+					<form id="inline_form" action="{{ url_for('show_other_page') }}" method="post">
+							<input type="hidden" name="page_number" value={{10+10*(current_page//10)}}>
 							<button type="submit" class="btn btn-primary">>></button>
 						</form>
+					{% endif %}
 				</div>
 			</td>
 		</tr>
